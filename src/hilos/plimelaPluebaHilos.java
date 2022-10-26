@@ -12,10 +12,10 @@ public class plimelaPluebaHilos {
             productos.add("producto " + i);
         }
 
-        List<Hilo1> hilos = new ArrayList<>();
+        List<Thread> hilos = new ArrayList<>();
 
         for (int i = 0; i < 100; i++){
-            Hilo1 hilarnium = new Hilo1(productos.get(i));
+            Thread hilarnium = new Thread(new HiloInterfaz(productos.get(i)));
             hilarnium.start();
             hilos.add(hilarnium);
         }
@@ -25,6 +25,8 @@ public class plimelaPluebaHilos {
         for (int i = 0; i < hilos.size(); i++){
             hilos.get(i).join();
         }
+
+
 
         System.out.println("fin");
 
